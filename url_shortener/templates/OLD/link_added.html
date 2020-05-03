@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html style="height: 100%; margin: 0;">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minilink - short link</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+  <body style="height: 100%; margin: 0; display: flex; flex-direction: column;">
+
+  <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand" style="font-size:2rem">
+    <a class="navbar-item" href="https://minilink.buzz">
+      Minilink
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-light" href="{{ url_for('short.index') }}">
+            Home
+          </a>
+          <a class="button is-light"  href="{{ url_for('short.stats') }}">
+            Stats
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+  <section class="section" style="flex: 1 0 auto;">
+    <div class="container">
+            <div class="field">
+                <label class="label">Original URL</label>
+                <div class="control">
+                    <input class="input" type="text" name="original_url" value="{{ original_url }}">
+                </div>
+            </div>
+            <div class="field">
+                    <label class="label">New URL</label>
+                    <div class="control">
+                        <input class="input" type="text" name="original_url" value="{{ url_for('short.redirect_to_url', short_url=new_link, _external=True) }}" id="myInput">
+                    </div>
+                    <button onclick="myFunction()">Copy short link</button>
+            </div>
+    </div>
+  </section>
+
+
+    <footer class="footer" style=" flex-shrink: 0; height: 15px;">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Minilink</strong> by <a href="https://fii.digital">fii.digital</a>.
+        </p>
+      </div>
+    </footer>
+   <script>
+       function myFunction() {
+          /* Get the text field */
+          var copyText = document.getElementById("myInput");
+
+          /* Select the text field */
+          copyText.select();
+          copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+          /* Copy the text inside the text field */
+          document.execCommand("copy");
+
+          /* Alert the copied text */
+          alert("Copied the text: " + copyText.value);
+        }
+   </script>
+
+  </body>
+</html>

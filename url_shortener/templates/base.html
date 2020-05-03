@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> {% block title %} Base {% endblock %} - Minilink </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+        <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/favicon.ico') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+
+    <body>
+
+        <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand" style="font-size:2rem">
+            <a class="navbar-item" href="{{ url_for('short.index') }}">
+              Minilink
+            </a>
+
+           <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <div id="navMenu" class="navbar-menu">
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-light"  href="{{ url_for('short.stats') }}">
+                    Stats
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <section class="section">
+
+            {% block content %} ... {% endblock %}
+
+        </section>
+
+        <footer class="footer">
+          <div class="content has-text-centered">
+            <p>
+              <strong>Minilink</strong> by <a href="https://fii.digital">fii.digital</a>.
+            </p>
+          </div>
+        </footer>
+
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+    </body>
+</html>

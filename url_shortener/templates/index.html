@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <br><br><br><br>
+        <form method="POST" action="{{ url_for('short.add_link') }}" name="linkForm" onsubmit="return validateForm()">
+            <div class="field">
+                <label class="label">Insert the original URL here</label>
+                <div class="control">
+                    <input class="input" type="text" name="original_url" required>
+                </div>
+
+            </div>
+            <div class="control">
+                <button type="submit" class="button is-info">Shorten</button>
+            </div>
+
+        </form>
+    </div>
+    <div class="push" style="height: 50px;"></div>
+{% endblock %}
